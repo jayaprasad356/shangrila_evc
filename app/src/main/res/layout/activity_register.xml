@@ -5,65 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.RegisterActivity">
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            android:layout_margin="10dp"/>
 
-        <LinearLayout
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:layout_margin="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
+                />
 
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:id="@+id/email"
-                android:background="@drawable/ed_bg"
-                android:padding="14dp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            app:endIconMode="password_toggle"
+            android:layout_margin="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Password"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
+                android:inputType="textPassword"
+                />
 
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:id="@+id/password"
-                android:background="@drawable/ed_bg"
-                android:padding="14dp" />
-
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,74 +63,52 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Propertu Type"
+                android:text="Property Type"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 
 
-            <EditText
+            <Spinner
+                android:id="@+id/spinProperty"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:id="@+id/propertutype"
-                android:background="@drawable/ed_bg"
-                android:padding="14dp" />
+                android:layout_height="40dp"
+                android:entries="@array/property_type"
+                android:layout_marginTop="10dp"/>
 
 
         </LinearLayout>
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:hint="Number of Bedrooms"
+            android:layout_margin="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edBedrooms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Number of Bedrooms"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:id="@+id/numberof"
-                android:background="@drawable/ed_bg"
-                android:padding="14dp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:hint="EVC Code"
+            android:layout_margin="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edEVCcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="EVC"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
+                android:maxLength="8"
+                />
 
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:id="@+id/evc"
-                android:background="@drawable/ed_bg"
-                android:padding="14dp" />
-
-
-        </LinearLayout>
-
+        </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -156,18 +122,12 @@
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="5dp"
-        android:backgroundTint="@color/grey"
         android:padding="10dp"
         android:text="SignUp"
         android:textAllCaps="false"
-        android:textColor="@color/black" />
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+         />
 
 
 </RelativeLayout>
