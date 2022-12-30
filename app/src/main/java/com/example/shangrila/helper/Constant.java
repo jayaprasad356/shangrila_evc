@@ -1,7 +1,7 @@
 package com.example.shangrila.helper;
 
 public class Constant {
-    public static final String MainBaseUrl = "https://updatedata.greymatterworks.in/";
+    public static final String MainBaseUrl = "https://shangrila.greymatterworks.in/";
     //public static final String MainBaseUrl = "http://192.168.43.38/update_data/";
     public static final String BaseUrl = MainBaseUrl + "api/";
     public static final String LOGIN_URL = BaseUrl + "login.php";
@@ -21,6 +21,7 @@ public class Constant {
     public static final String PIN = "pin";
     public static final String ID = "id";
     public static final String EMAIL = "email";
+    public static final String PASSWORD = "password";
     public static final String MANAGER_ID = "manager_id";
     public static final String USER_ID = "user_id";
     public static final String AMOUNT = "amount";
