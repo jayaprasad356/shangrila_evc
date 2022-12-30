@@ -25,12 +25,12 @@
 
 
             <Button
+                android:id="@+id/rechargewallet"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:text="Recharge Wallet"
-                android:backgroundTint="@color/grey"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textAllCaps="false"
                 />
 
@@ -45,8 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:text="Wallet Balance 500"
-                android:backgroundTint="@color/grey"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textAllCaps="false"
                 />
 
@@ -71,14 +70,18 @@
                 />
 
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ed_bg"
-                android:padding="14dp"
-                android:id="@+id/submissiondate"
-                android:layout_marginTop="5dp"
-                />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/submissiondate"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
         </LinearLayout>
@@ -99,14 +102,18 @@
                 />
 
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ed_bg"
-                android:padding="14dp"
-                android:id="@+id/electricity"
-                android:layout_marginTop="5dp"
-                />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/electricity"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
         </LinearLayout>
@@ -127,14 +134,18 @@
                 />
 
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ed_bg"
-                android:padding="14dp"
-                android:id="@+id/electricitynight"
-                android:layout_marginTop="5dp"
-                />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/electricitynight"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
         </LinearLayout>
@@ -155,14 +166,18 @@
                 />
 
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ed_bg"
-                android:padding="14dp"
-                android:id="@+id/gas"
-                android:layout_marginTop="5dp"
-                />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/gas"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
         </LinearLayout>
@@ -172,13 +187,12 @@
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="Pay Now"
             android:layout_marginHorizontal="20dp"
             android:layout_gravity="center"
             android:padding="14dp"
             android:layout_marginTop="40dp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/grey"
+            android:textColor="@color/white"
             android:layout_marginBottom="5dp"
             />
 
