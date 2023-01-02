@@ -16,7 +16,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ed_bg"
         android:padding="14dp"
-        android:id="@+id/evc"
+        android:id="@+id/edEVCcode"
+        android:maxLength="8"
+        android:inputType="number"
         android:layout_margin="20dp"
         />
     <Button

@@ -16,7 +16,9 @@ import android.widget.Toast;
 import com.example.shangrila.R;
 import com.example.shangrila.helper.ApiConfig;
 import com.example.shangrila.helper.Constant;
+import com.example.shangrila.helper.Session;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,25 +30,19 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView tvSignup;
     EditText edEmail,edPassword;
+    Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        session = new Session(LoginActivity.this);
         btnLogin = findViewById(R.id.btnLogin);
         tvSignup = findViewById(R.id.tvSignup);
         edEmail = findViewById(R.id.edEmail);
         edPassword = findViewById(R.id.edPassword);
         //debug button will be removed soon
-        Button debug = findViewById(R.id.go_home);
 
-        debug.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                startActivity(intent);
-            }
-        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,18 +53,26 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Enter your Password", Toast.LENGTH_SHORT).show();
                 }else{
                     Map<String,String> params = new HashMap<>();
-                    params.put(Constant.EMAIL,edEmail.toString().trim());
-                    params.put(Constant.PASSWORD,edPassword.toString().trim());
+                    params.put(Constant.EMAIL,edEmail.getText().toString().trim());
+                    params.put(Constant.PASSWORD,edPassword.getText().toString().trim());
                     ApiConfig.RequestToVolley((result,response) -> {
                         if(result){
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                                    JSONArray jsonArray = jsonObject.getJSONArray(Constant.DATA);
+                                    session.setBoolean("is_logged_in", true);
+                                    session.setData(Constant.ID,jsonArray.getJSONObject(0).getString(Constant.ID));
+                                    session.setData(Constant.WALLET,jsonArray.getJSONObject(0).getString(Constant.WALLET));
                                     Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     Toast.makeText(LoginActivity.this, ""+String.valueOf(jsonObject.getString(Constant.MESSAGE)), Toast.LENGTH_SHORT).show();
                                     startActivity(intent);
+                                }
+                                else {
+                                    Toast.makeText(LoginActivity.this, ""+String.valueOf(jsonObject.getString(Constant.MESSAGE)), Toast.LENGTH_SHORT).show();
+
                                 }
                         } catch (JSONException e) {
                                 e.printStackTrace();

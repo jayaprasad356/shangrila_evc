@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    Button btnNext;
+    Button btnSignup;
     EditText edEmail,edPassword,edBedrooms,edEVCcode;
     Spinner spinProperty;
     ImageView imgBack;
@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         edBedrooms =findViewById(R.id.edBedrooms);
         edEVCcode =findViewById(R.id.edEVCcode);
         spinProperty =findViewById(R.id.spinProperty);
-        btnNext = findViewById(R.id.btnNext);
+        btnSignup = findViewById(R.id.btnSignup);
         imgBack = findViewById(R.id.imgBack);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
+        btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -83,7 +83,35 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void signUp()
     {
-        Intent intent = new Intent(activity, HomeActivity.class);
-        startActivity(intent);
+        Map<String,String> params = new HashMap<>();
+        params.put(Constant.EMAIL,edEmail.getText().toString().trim());
+        params.put(Constant.PASSWORD,edPassword.getText().toString().trim());
+        params.put(Constant.PROPERTY_TYPE,spinProperty.getSelectedItem().toString().trim());
+        params.put(Constant.BEDROOMS_COUNT, edBedrooms.getText().toString().trim());
+        params.put(Constant.EVC_CODE, edEVCcode.getText().toString().trim());
+        ApiConfig.RequestToVolley((result,response) -> {
+            Log.d("SIGN_UP_RES",response);
+            if(result){
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                        Intent intent = new Intent(activity,HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Toast.makeText(activity, ""+String.valueOf(jsonObject.getString(Constant.MESSAGE)), Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(activity, ""+String.valueOf(jsonObject.getString(Constant.MESSAGE)), Toast.LENGTH_SHORT).show();
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        },activity, Constant.SIGNUP_URL, params,true);
+
+
     }
 }
